@@ -1,0 +1,13 @@
+{
+    "frontend": {
+        "top": "7467",
+        "bottom": "-325",
+        "left": "-383",
+        "right": "13254",
+        "color": "#000000",
+        "grid": "false"
+    },
+    "backend": {
+        "L2": "false"
+    }
+}

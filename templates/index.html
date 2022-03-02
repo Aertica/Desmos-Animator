@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Desmos Animator</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <script src="https://www.desmos.com/api/v1.6/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{url_for('static', filename='script.js')}}" defer></script>
+</head>
+<body>
+    <div id="left">
+        <div id="calculator">
+            <input type="button" id="start" value="Start" onclick="start()">
+        </div>
+    </div>
+    <div id="right">
+        <form id="url" action="/url" method="post">
+            <Label for="url-input">URL:</Label>
+            <input type="url" id="url-input" name="url">
+            <input type="submit" value="Enter">
+        </form>
+        <div id="progress">
+            <div id="fill"></div>
+            <p id="fraction"></p>
+            <p id="time">00 : 00 : 00</p>
+        </div>
+        <form id="settings" action="/savesettings" method="post">
+            <h1>Settings</h1>
+            <div id="bounds">
+                <label for="top-input">Top bound:</label>
+                <input type="number" id="top-input" name="top"><br>
+                <label for="bottom-input">Bottom bound:</label>
+                <input type="number" id="bottom-input" name="bottom"><br>
+                <label for="left-input">Left bound:</label>
+                <input type="number" id="left-input" name="left"><br>
+                <label for="right-input">Right bound:</label>
+                <input type="number" id="right-input" name="right"><br>
+            </div>
+            <div id="color">              
+                <Label for="color-selector">Color:</Label>
+                <input type="color" id="color-selector" name="color">                     
+            </div>
+            <div id="grid">          
+                <label for="show-grid">Show Grid:</label>
+                <input type="checkbox" id="show-grid" name="grid" value="true">*currently does nothing*
+                <input type="hidden" name="grid" value="false">
+            </div>
+            <div id="L2">                
+                <label for="use-L2">Use L2-Gradient:</label>
+                <input type="checkbox" id="use-L2" name="L2" value="true">*currently does nothing*
+                <input type="hidden" name="L2" value="false">
+            </div>
+            <input type="submit" value="Save">
+            <p>
+                Only uses youtube urls. After entering url make sure the entire first frame is in the desmos display then click save then start. Make sure youu have potrace, youtube-dl, and ffmpeg downloaded befoore use.
+            </p>
+        </form>
+    </div>
+</body>
+<a id="video" href="{{url_for('static', filename='video.mp4')}}" download="video.mp4"></a>
+</html>
